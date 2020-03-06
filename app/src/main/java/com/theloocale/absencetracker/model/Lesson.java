@@ -1,12 +1,14 @@
 package com.theloocale.absencetracker.model;
 
 public class Lesson {
-    private String id, name;
+    private String id;
+    private String name;
     private int rightToAbsence;
 
-    public Lesson(String id, String name) {
+    public Lesson(String id, String name, int rightToAbsence) {
         this.id = id;
         this.name = name;
+        this.rightToAbsence = rightToAbsence;
     }
 
     public String getId() {
@@ -23,5 +25,13 @@ public class Lesson {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getRightToAbsence() {
+        return rightToAbsence;
+    }
+
+    public void setRightToAbsence(int rightToAbsence) {
+        this.rightToAbsence = rightToAbsence;
     }
 }
