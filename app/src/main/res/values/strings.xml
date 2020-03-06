@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Absence Tracker</string>
+    <string name="user_name">Name</string>
+    <string name="let_s_go">Let\'s Go!</string>
+    <string name="welcome">Welcome</string>
+    <string name="banner">A new way to tracking absences</string>
+    <string name="copyright">Created by Orhan Tugrul With</string>
+    <string name="login_error_content">Input cannot be empty or lover than three</string>
+
+    <!-- Login page strings. -->
+</resources>

@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!-- Login activity theme. -->
+    <style name="LoginTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/loginPrimary</item>
+        <item name="colorPrimaryDark">@color/loginPrimary</item>
+        <item name="colorAccent">@color/loginAccent</item>
+    </style>
+
+    <!-- Button theme. -->
+    <style name="ButtonTheme" parent="Widget.MaterialComponents.Button">
+        <item name="colorPrimary">@android:color/darker_gray</item>
+    </style>
+
+    <!-- Success button theme. -->
+    <style name="ButtonTheme.Success" parent="Widget.MaterialComponents.Button">
+        <item name="colorPrimary">@color/success</item>
+        <item name="colorAccent">@android:color/white</item>
+    </style>
+</resources>

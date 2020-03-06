@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application colors. -->
+    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimaryDark">#C7C7C7</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!-- Login activity colors. -->
+    <color name="loginPrimary">#7B4BFF</color>
+    <color name="loginPrimaryDark">#6539BA</color>
+    <color name="loginAccent">#74D5DE</color>
+
+    <color name="success">#43A047</color>
+</resources>
