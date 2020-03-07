@@ -20,7 +20,7 @@ public class DatabaseHelperTest {
     private Context context;
 
     @Before
-    public void setup() {
+    public void setUp() {
         context = InstrumentationRegistry.getInstrumentation().getTargetContext();
     }
 
