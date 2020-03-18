@@ -2,6 +2,7 @@ package com.theloocale.absencetracker.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -68,5 +69,50 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
+
+        binding.viewGithub.setOnClickListener((v) ->
+                startIntent("https://github.com/orhantgrl", IntentType.WEB_PAGE));
+
+        binding.viewLinkedin.setOnClickListener((v) ->
+                startIntent("https://www.linkedin.com/in/orhantgrl", IntentType.WEB_PAGE));
+
+        binding.viewHackerrank.setOnClickListener((v) ->
+                startIntent("https://www.hackerrank.com/orhantgrl", IntentType.WEB_PAGE));
+
+        binding.viewMail.setOnClickListener((v) ->
+                startIntent("orhan.tugrul.61@gmail.com", IntentType.MAIL));
+    }
+
+    public void startIntent(final String uri, IntentType type) {
+        switch (type) {
+            case WEB_PAGE:
+                Uri webPage = Uri.parse(uri);
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, webPage);
+                if (browserIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(browserIntent);
+                }
+                break;
+            case MAIL:
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+                emailIntent.setData(Uri.parse("mailto:"));
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{uri});
+                if (emailIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivity(emailIntent);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    private enum IntentType {
+        WEB_PAGE(1),
+        MAIL(2);
+
+        int type;
+
+        IntentType(int type) {
+            this.type = type;
+        }
     }
 }
