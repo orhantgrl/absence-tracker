@@ -6,6 +6,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
+
 /**
  * @author orhangrl
  * created on 3/11/2020.
@@ -13,22 +15,26 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "lesson_table")
 public class Lesson {
-    @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "id")
+    @PrimaryKey
+    @ColumnInfo(name = "lessonId", index = true)
     private String id;
 
     @NonNull
-    @ColumnInfo(name = "name")
+    @ColumnInfo(name = "lessonName")
     private String name;
 
-    @ColumnInfo(name = "left_to_absence")
-    private int leftToAbsence;
+    @NonNull
+    @ColumnInfo(name = "lessonRightToAbsenteeism")
+    private Integer rightToAbsenteeism;
 
-    public Lesson(@NonNull final String id, @NonNull final String name, final int leftToAbsence) {
+    @Ignore
+    private List<Absence> absences;
+
+    public Lesson(@NonNull String id, @NonNull String name, @NonNull Integer rightToAbsenteeism) {
         this.id = id;
         this.name = name;
-        this.leftToAbsence = leftToAbsence;
+        this.rightToAbsenteeism = rightToAbsenteeism;
     }
 
     @NonNull
@@ -49,11 +55,20 @@ public class Lesson {
         this.name = name;
     }
 
-    public int getLeftToAbsence() {
-        return leftToAbsence;
+    @NonNull
+    public Integer getRightToAbsenteeism() {
+        return rightToAbsenteeism;
     }
 
-    public void setLeftToAbsence(int leftToAbsence) {
-        this.leftToAbsence = leftToAbsence;
+    public void setRightToAbsenteeism(@NonNull Integer rightToAbsenteeism) {
+        this.rightToAbsenteeism = rightToAbsenteeism;
+    }
+
+    public List<Absence> getAbsences() {
+        return absences;
+    }
+
+    public void setAbsences(List<Absence> absences) {
+        this.absences = absences;
     }
 }
