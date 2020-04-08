@@ -1,5 +1,6 @@
 package com.theloocale.absencetracker.database;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
@@ -12,7 +13,9 @@ import com.theloocale.absencetracker.persistence.Absence;
 import com.theloocale.absencetracker.persistence.Lesson;
 import com.theloocale.absencetracker.persistence.LessonDao;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -22,7 +25,7 @@ import java.util.concurrent.Executors;
  * created on 3/11/2020.
  */
 
-@Database(entities = {Lesson.class, Absence.class}, version = 6, exportSchema = false)
+@Database(entities = {Lesson.class, Absence.class}, version = 7, exportSchema = false)
 public abstract class LessonDatabase extends RoomDatabase {
 
     public abstract LessonDao lessonDao();
@@ -54,13 +57,18 @@ public abstract class LessonDatabase extends RoomDatabase {
             super.onCreate(db);
             EXECUTOR_SERVICE.execute(() -> {
                 LessonDao lessonDao = instance.lessonDao();
+                @SuppressLint("SimpleDateFormat")
+                String date = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
+
                 List<Absence> absences = new ArrayList<>();
-                Lesson lesson = new Lesson("B10001", "Math", 5);
                 absences.add(new Absence("23/03/2020"));
                 absences.add(new Absence("23/03/2021"));
                 absences.add(new Absence("23/03/2022"));
                 absences.add(new Absence("23/03/2023"));
+
+                Lesson lesson = new Lesson("B10001", "Math", date, 5);
                 lesson.setAbsences(absences);
+
                 lessonDao.insertLessonWithAbsences(lesson);
             });
         }
