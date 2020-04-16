@@ -25,15 +25,20 @@ public class Lesson {
     private String name;
 
     @NonNull
+    @ColumnInfo(name = "dateOfAdded")
+    private String date;
+
+    @NonNull
     @ColumnInfo(name = "lessonRightToAbsenteeism")
     private Integer rightToAbsenteeism;
 
     @Ignore
     private List<Absence> absences;
 
-    public Lesson(@NonNull String id, @NonNull String name, @NonNull Integer rightToAbsenteeism) {
+    public Lesson(@NonNull String id, @NonNull String name, @NonNull String date, @NonNull Integer rightToAbsenteeism) {
         this.id = id;
         this.name = name;
+        this.date = date;
         this.rightToAbsenteeism = rightToAbsenteeism;
     }
 
@@ -53,6 +58,15 @@ public class Lesson {
 
     public void setName(@NonNull String name) {
         this.name = name;
+    }
+
+    @NonNull
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(@NonNull String date) {
+        this.date = date;
     }
 
     @NonNull
